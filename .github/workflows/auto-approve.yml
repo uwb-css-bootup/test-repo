@@ -9,8 +9,11 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: actions/labeler@v5
+      - id: autolabel
+        name: autolabel
+        uses: actions/labeler@v5
   approval:
+    needs: lablelling
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -21,6 +24,7 @@ jobs:
         with: 
           review-message: "Auto approved for merging during UWB-CSS-BOOTUP"
   merging:
+    needs: approval
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
