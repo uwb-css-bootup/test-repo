@@ -10,6 +10,7 @@ jobs:
       contents: write
     if: 
     steps:
+      - uses: actions/labeler@v5
       - uses: hmarr/auto-approve-action@v4
         with: 
           review-message: "Auto approved for merging during UWB-CSS-BOOTUP"
